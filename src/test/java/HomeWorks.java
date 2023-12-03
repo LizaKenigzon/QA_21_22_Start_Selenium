@@ -43,10 +43,14 @@ public class HomeWorks {
 
         WebElement e13 = wd.findElement(By.tagName("button"));
         WebElement e14 = wd.findElement(By.cssSelector("button"));
+        WebElement xEl = wd.findElement((By.xpath("//button")));
+        //WebElement xEl1 = wd.findElement(By.xpath("/html/body/div/div/div/form/button"));
+
 
         // by class
         WebElement div_container1 = wd.findElement(By.className("container"));
         WebElement div_container2 = wd.findElement(By.cssSelector(".container"));
+        WebElement xEl2 = wd.findElement(By.xpath("//*[@class='container']"));
 
         WebElement div_navbar = wd.findElement(By.className("navbar-component_nav__1X_4m"));
         WebElement div_navbar2 = wd.findElement(By.cssSelector(".navbar-component_nav__1X_4m"));
@@ -60,6 +64,7 @@ public class HomeWorks {
         // by id
         WebElement root1 = wd.findElement(By.id("root"));
         WebElement root2 = wd.findElement(By.cssSelector("#root"));
+        WebElement xEl3 = wd.findElement(By.xpath("//*[@id='root']"));
 
         // by attribute
         WebElement input1 = wd.findElement(By.cssSelector("[href='/home']"));
@@ -77,5 +82,17 @@ public class HomeWorks {
         WebElement input11 = wd.findElement(By.cssSelector("[name='login']"));
         WebElement input12 = wd.findElement(By.cssSelector("[name='registration']"));
 
+        //One of the elements (by attribute) ==> start + end + contain
+        WebElement el18 = wd.findElement(By.cssSelector("[placeholder='Email']"));
+        WebElement xEl18 = wd.findElement(By.xpath("//input[@placeholder='Email']"));
+
+        WebElement el19 = wd.findElement(By.cssSelector("[placeholder^='Em']"));
+        WebElement xEl19 = wd.findElement(By.xpath("//input[starts-with(@placeholder,'Em')]"));
+
+        WebElement el20 = wd.findElement(By.cssSelector("[placeholder$='il']"));
+        WebElement xEl20 = wd.findElement(By.xpath("//input[contains(@placeholder,'il')]"));
+
+        WebElement el21 = wd.findElement(By.cssSelector("[placeholder*='ma']"));
+        WebElement xEl21 = wd.findElement(By.xpath("//input[contains(@placeholder,'ma')]"));
     }
 }
