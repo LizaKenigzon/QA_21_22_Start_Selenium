@@ -2,9 +2,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.Collections;
 import java.util.List;
 
 public class HomeWorks {
@@ -116,5 +118,38 @@ public class HomeWorks {
 
         WebElement el21 = wd.findElement(By.cssSelector("[placeholder*='ma']"));
         WebElement xEl29 = wd.findElement(By.xpath("//input[contains(@placeholder,'ma')]"));
+        WebElement xEl30 = wd.findElement(By.xpath("//a[3]"));
     }
+
+    @Test
+    public void classWork(){
+        //parent
+        WebElement el1 = wd.findElement(By.xpath("//h1/parent::*"));
+        WebElement el2 = wd.findElement(By.xpath("//h1/parent::div"));
+        WebElement el3 = wd.findElement(By.xpath("//h1/.."));
+        //WebElement el = wd.findElement(By.xpath("//div/div//input/.."));
+
+        //ancestors
+        WebElement el4 = wd.findElement(By.xpath("//h1/ancestor::*")); //all(first)
+        WebElement el5 = wd.findElement(By.xpath("//h1/ancestor::div")); //2 options of div
+        WebElement el6 = wd.findElement(By.xpath("//h1/ancestor::div[1]")); //div with index
+
+        //ancestors-or-self
+        WebElement el7 = wd.findElement(By.xpath("//h1/ancestor-or-self::*")); //all+child
+        List<WebElement> list = Collections.singletonList(wd.findElement(By.xpath("//h1/ancestor-or-self::*"))); //all in the list
+
+        //following-sibling
+        List<WebElement> list1 = wd.findElements(By.xpath("//h1/following-sibling::a")); //all in the list
+
+        //preceding-sibling
+        WebElement el8 = wd.findElement(By.xpath("//a[@href='/login']/preceding-sibling::h1"));
+        List<WebElement> list2 = wd.findElements(By.xpath("//a[@href='/login']/preceding-sibling::a"));
+
+    }
+
+    @AfterClass
+    public void close(){
+        wd.close();
+    }
+
 }
